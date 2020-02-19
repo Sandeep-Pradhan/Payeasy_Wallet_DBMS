@@ -1,0 +1,166 @@
+DROP TABLE IF EXISTS Person CASCADE;
+
+CREATE TABLE Person(
+	person_id integer NOT NULL ,
+	person_fname varchar(50) NOT NULL,
+	person_lname varchar(50) NOT NULL,
+	person_mobile varchar(10) NOT NULL,
+	person_email varchar(30) NOT NULL,
+	person_gender varchar(2) NOT NULL,
+	person_dob date NOT NULL,
+	house_no integer NOT NULL,
+	locality varchar(30) NOT NULL,
+	city varchar(30) NOT NULL,
+	p_state varchar(30) NOT NULL,
+	PRIMARY KEY(person_id),
+	UNIQUE(person_mobile,person_email)
+);
+
+DROP TABLE IF EXISTS Roles CASCADE;
+
+CREATE TABLE Roles(
+	role_id integer NOT NULL,
+	is_user boolean NOT NULL,
+	is_admin boolean NOT NULL,
+	PRIMARY KEY(role_id)
+);
+
+DROP TABLE IF EXISTS Role_has CASCADE;
+CREATE TABLE role_has(	
+	person_id integer  NOT NULL REFERENCES person(person_id)
+		ON DELETE CASCADE ON UPDATE CASCADE,
+	role_id integer NOT NULL REFERENCES Roles(role_id)
+		ON DELETE CASCADE ON UPDATE CASCADE,
+	PRIMARY KEY(person_id,role_id),
+	UNIQUE(person_id)
+);
+
+DROP TABLE IF EXISTS users CASCADE;
+CREATE TABLE users(
+	user_id integer NOT NULL,
+	pass varchar(15) NOT NULL,
+	KYC_verf_status varchar(15) NOT NULL,
+	aadhar_card_no varchar(12) ,
+	PAN_no  varchar(10) ,
+	role_id integer  NOT NULL REFERENCES Roles(role_id)
+		ON DELETE CASCADE ON UPDATE CASCADE,
+	PRIMARY KEY(user_id),
+	UNIQUE(aadhar_card_no,PAN_no)
+);
+
+DROP TABLE IF EXISTS admins CASCADE;
+CREATE TABLE Admins(
+	admin_id integer NOT NULL,
+	pass varchar(15) NOT NULL,
+	role_id integer NOT NULL REFERENCES Roles(role_id)
+		ON DELETE CASCADE ON UPDATE CASCADE,
+	PRIMARY KEY(admin_id)	
+);
+
+DROP TABLE IF EXISTS Complaint CASCADE;
+CREATE table Complaint(
+	comp_id integer NOT NULL,
+	comp_desc varchar(50) NOT NULL,
+	comp_status varchar(20) NOT NULL,
+	user_id integer  NOT NULL REFERENCES Users(user_id)
+		ON DELETE CASCADE ON UPDATE CASCADE,
+	
+	admin_id integer NOT NULL REFERENCES Admins(admin_id)
+		ON DELETE CASCADE ON UPDATE CASCADE,
+	PRIMARY Key (comp_id)
+);
+
+DROP TABLE IF EXISTS Wallet CASCADE;
+CREATE TABLE Wallet(
+	user_id integer NOT NULL,
+	PRIMARY KEY (user_id) ,
+	balance integer  NOT NULL
+);
+
+DROP TABLE IF EXISTS Transactions CASCADE;
+CREATE table Transactions(
+	trans_id integer NOT NULL,
+	trans_from varchar(20) NOT NULL,
+	trans_to varchar(20) NOT NULL,
+	amount integer NOT NULL,
+	trans_descrip varchar(30) NOT NULL,
+	trans_timestamp timestamp NOT NULL,
+	trans_status varchar(15) NOT NULL,
+	PRIMARY Key (trans_id)
+);
+
+DROP TABLE IF EXISTS Payment CASCADE;
+CREATE TABLE Payment(
+	pay_id integer NOT NULL,
+	pay_type varchar(20) NOT NULL,
+	amount integer NOT NULL,
+	user_id integer  NOT NULL REFERENCES Wallet(user_id)
+		ON DELETE CASCADE ON UPDATE CASCADE,
+	trans_id integer NOT NULL REFERENCES Transactions(trans_id)
+		ON DELETE CASCADE ON UPDATE CASCADE,
+	PRIMARY Key (pay_id),
+	UNIQUE(trans_id)
+);
+
+DROP TABLE IF EXISTS Transfer CASCADE;
+CREATE TABLE Transfer(
+	transfer_no integer NOT NULL,
+	Amount integer NOT NULL,
+	trans_id integer  NOT NULL REFERENCES Transactions(trans_id)
+		ON DELETE CASCADE ON UPDATE CASCADE,
+	from_user_id  integer NOT NULL REFERENCES Wallet(user_id)
+		ON DELETE CASCADE ON UPDATE CASCADE,
+	to_user_id integer NOT NULL REFERENCES Wallet(user_id)
+		ON DELETE CASCADE ON UPDATE CASCADE,
+	PRIMARY Key (transfer_no,from_user_id,to_user_id),
+	UNIQUE(trans_id)
+
+);
+
+DROP TABLE IF EXISTS Checks CASCADE;
+CREATE TABLE Checks(
+	trans_id integer NOT NULL REFERENCES Transactions(trans_id)
+		ON DELETE CASCADE ON UPDATE CASCADE,
+	admin_id integer NOT NULL REFERENCES Admins(admin_id)
+		ON DELETE CASCADE ON UPDATE CASCADE,
+	PRIMARY Key (admin_id,trans_id)
+);
+
+
+DROP TABLE IF EXISTS Telecom_Company CASCADE;
+CREATE TABLE Telecom_company(
+	comp_name varchar(20) NOT NULL,
+	comp_id integer NOT NULL ,
+	PRIMARY Key (comp_id),
+	UNIQUE(comp_name)
+);
+
+DROP TABLE IF EXISTS Recharge_plan CASCADE;
+CREATE TABLE Recharge_plan(
+	plan_id integer NOT NULL,
+	comp_id integer NOT NULL REFERENCES Telecom_company(comp_id)
+		ON DELETE CASCADE ON UPDATE CASCADE,
+	plan_desc varchar(50)  NOT NULL,
+	plan_validity varchar(10) NOT NULL,
+	plan_amount integer NOT NULL,
+	PRIMARY Key (comp_id,plan_id)
+);
+
+DROP TABLE IF EXISTS Recharge CASCADE;
+CREATE TABLE Recharge(
+	comp_id integer NOT NULL,
+	plan_id integer NOT NULL,
+	user_id integer NOT NULL REFERENCES Wallet(user_id)
+		ON DELETE CASCADE ON UPDATE CASCADE,
+	FOREIGN KEY (comp_id,plan_id) REFERENCES Recharge_plan(comp_id,plan_id)
+		ON DELETE CASCADE ON UPDATE CASCADE,
+	ph_no  varchar(10) NOT NULL,
+	trans_id integer NOT NULL REFERENCES  Transactions(trans_id)
+		ON DELETE CASCADE ON UPDATE CASCADE,
+	PRIMARY Key (plan_id,comp_id,user_id),
+	UNIQUE(trans_id)
+);
+
+
+
+

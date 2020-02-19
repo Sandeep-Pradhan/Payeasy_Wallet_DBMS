@@ -1,0 +1,138 @@
+
+INSERT INTO Roles VALUES (1,true,false);
+INSERT INTO Roles VALUES (2,false,true);
+INSERT INTO Roles VALUES (3,true,true);
+
+
+
+
+INSERT INTO person VALUES (1,'Aayush','Dheemar','9988776655','201751001@iiit.ac.in','M',   TO_DATE('03/05/1999','MM/DD/YYYY'),1101,'Sector 12','Indore','Madhya Pradesh',1);
+INSERT INTO person VALUES (2,'Abhishek','Singh','8888776655','201751002@iiit.ac.in','M',   TO_DATE('13/08/1998','MM/DD/YYYY'),1104,'Sector 8','Kanpur','Uttar Pradesh',2);
+INSERT INTO person VALUES (3,'Aditya','Prakash','9987654000','201751003@iiit.ac.in','M',   TO_DATE('22/01/1999','MM/DD/YYYY'),910,'Sector 22','Patna','Bihar',3);
+INSERT INTO person VALUES (4,'Ajay','Kumar','8889898911','201751004@iiit.ac.in','M',       TO_DATE('17/05/1999','MM/DD/YYYY'),713,'Sector 14','Kanpur','Uttar Pradesh Pradesh',2);
+INSERT INTO person VALUES (5,'Akshit','Maheswari','9191918876','201751005@iiit.ac.in','M', TO_DATE('11/03/1998','MM/DD/YYYY'),1107,'Sector 17','Kota','Rajasthan',3);
+INSERT INTO person VALUES (6,'Aman','Agrahari','7567811232','201751006@iiit.ac.in','M',    TO_DATE('29/09/1999','MM/DD/YYYY'),813,'Sector 10','Indore','Madhya Pradesh',3);
+INSERT INTO person VALUES (7,'Anjali','Priya','7788996543','201751007@iiit.ac.in','F',     TO_DATE('26/11/1999','MM/DD/YYYY'),210,'Sector 03','Patna','Bihar',1);
+INSERT INTO person VALUES (8,'Arpit','Toshniwal','8989090955','201751008@iiit.ac.in','M',  TO_DATE('31/12/1998','MM/DD/YYYY'),1110,'Sector 08','Gandhinagar','Gujarat',1);
+INSERT INTO person VALUES (9,'Arpit','Tiwari','8340123400','201751009@iiit.ac.in','M',     TO_DATE('01/04/1998','MM/DD/YYYY'),1113,'Sector 15','Ahmedabad','Gujarat',3);
+INSERT INTO person VALUES (10,'Chanchal','Saini','9938404022','201751011@iiit.ac.in','F',  TO_DATE('15/07/1999','MM/DD/YYYY'),211,'Sector 21','Ahmedabad','Gujarat',1);
+
+
+
+
+
+
+INSERT INTO users VALUES (1,'Pass1234','Verified',    '707323411221','EPEPP9878N',1);
+INSERT INTO users VALUES (2,'Pass1234','Verified',    '707313214532','EPEQW9098N',3);
+INSERT INTO users VALUES (3,'xxyy3452','Not Verified','707112214334','EPEXY0091N',5);
+INSERT INTO users VALUES (4,'llkjk344','Verified',    '701234566556','EXXYW0900N',6);
+INSERT INTO users VALUES (5,'bbcs22cd','Verified',    '712300980000','EPEAA1234N',7);
+INSERT INTO users VALUES (6,'abhi234axy','Not Verified','798988554232','EPEEP4444N',8);
+INSERT INTO users VALUES (7,'xyz2234','Verified',    '707345542332','EPEBA5545N',9);
+INSERT INTO users VALUES (8,'xyz2234','Verified',    '788765609008','EPEPM7231N',10);
+
+
+
+
+INSERT INTO admins VALUES (1,'abbbhgh23',2);
+INSERT INTO admins VALUES (2,'llkjk344',4);
+INSERT INTO admins VALUES (3,'bindal23',5);
+INSERT INTO admins VALUES (4,'bdal23',3);
+INSERT INTO admins VALUES (5,'bil23',6);
+INSERT INTO admins VALUES (6,'lip23',9);
+
+
+
+
+
+
+INSERT INTO Complaint VALUES (1,'Transaction Money not Refunded after Cancelation of Payment.','SOLVED',1,2);
+INSERT INTO Complaint VALUES (2,'HDFC Bank Not Supported for Payment Gateway.','SOLVED',2,1);
+INSERT INTO Complaint VALUES (3,'Wallet Money Not updated even after 1 hour of payment.','SOLVED',1,3);
+INSERT INTO Complaint VALUES (4,'Transaction Money not Refunded after Cancelation of Payment.','NOT SOLVED',5,1);
+
+
+
+
+
+INSERT INTO wallet VALUES (1,1000,1);
+INSERT INTO wallet VALUES (2,2000,2);
+INSERT INTO wallet VALUES (3,1400,3);
+INSERT INTO wallet VALUES (4,2000,4);
+INSERT INTO wallet VALUES (5,0,5);
+INSERT INTO wallet VALUES (6,3020,6);
+INSERT INTO wallet VALUES (7,180,7);
+INSERT INTO wallet VALUES (8,400,8);
+
+
+
+
+
+INSERT INTO Transactions VALUES (1,'Add Money',to_timestamp('24-04-2019 15:36:38', 'dd-mm-yyyy hh24:mi:ss'),'Successfull');
+INSERT INTO Transactions VALUES (2,'Add Money',to_timestamp('24-04-2019 16:36:38', 'dd-mm-yyyy hh24:mi:ss'),'Successfull');
+INSERT INTO Transactions VALUES (3,'Add Money',to_timestamp('24-04-2019 16:38:38', 'dd-mm-yyyy hh24:mi:ss'),'Successfull');
+INSERT INTO Transactions VALUES (4,'Add Money',to_timestamp('24-04-2019 17:36:38', 'dd-mm-yyyy hh24:mi:ss'),'Successfull');
+INSERT INTO Transactions VALUES (5,'Add Money',to_timestamp('24-04-2019 18:36:38', 'dd-mm-yyyy hh24:mi:ss'),'Successfull');
+INSERT INTO Transactions VALUES (6,'Add Money',to_timestamp('24-04-2019 20:36:38', 'dd-mm-yyyy hh24:mi:ss'),'Successfull');
+INSERT INTO Transactions VALUES (7,'Trasfer Money',to_timestamp('25-04-2019 20:36:38', 'dd-mm-yyyy hh24:mi:ss'),'Successfull');
+INSERT INTO Transactions VALUES (8,'Trasfer Money',to_timestamp('26-04-2019 20:36:38', 'dd-mm-yyyy hh24:mi:ss'),'Successfull');
+INSERT INTO Transactions VALUES (9,'Trasfer Money',to_timestamp('27-04-2019 20:36:38', 'dd-mm-yyyy hh24:mi:ss'),'Successfull');
+INSERT INTO Transactions VALUES (10,'Trasfer Money',to_timestamp('28-04-2019 07:36:38', 'dd-mm-yyyy hh24:mi:ss'),'Successfull');
+INSERT INTO Transactions VALUES (11,'Add Money',to_timestamp('28-04-2019 08:36:38', 'dd-mm-yyyy hh24:mi:ss'),'Successfull');
+INSERT INTO Transactions VALUES (12,'Add Money',to_timestamp('28-04-2019 09:36:38', 'dd-mm-yyyy hh24:mi:ss'),'Successfull');
+INSERT INTO Transactions VALUES (13,'Add Money',to_timestamp('28-04-2019 10:36:38', 'dd-mm-yyyy hh24:mi:ss'),'Successfull');
+INSERT INTO Transactions VALUES (14,'Recharge',to_timestamp('29-04-2019 07:36:38', 'dd-mm-yyyy hh24:mi:ss'),'Successfull');
+INSERT INTO Transactions VALUES (15,'Recharge',to_timestamp('29-04-2019 08:36:38', 'dd-mm-yyyy hh24:mi:ss'),'Successfull');
+INSERT INTO Transactions VALUES (16,'Recharge',to_timestamp('29-04-2019 09:36:38', 'dd-mm-yyyy hh24:mi:ss'),'Successfull');
+INSERT INTO Transactions VALUES (17,'Recharge',to_timestamp('29-04-2019 17:36:38', 'dd-mm-yyyy hh24:mi:ss'),'Successfull');
+
+
+
+
+
+INSERT INTO Payment VALUES (1,'Credit Card',1000,1,1);
+INSERT INTO Payment VALUES (2,'Credit Card',1000,2,2);
+INSERT INTO Payment VALUES (3,'Credit Card',5000,3,3);
+INSERT INTO Payment VALUES (4,'Credit Card',1000,4,4);
+INSERT INTO Payment VALUES (5,'Credit Card',1000,4,5);
+INSERT INTO Payment VALUES (6,'Credit Card',1000,5,6);
+INSERT INTO Payment VALUES (7,'Debit Card',399,3,11);
+INSERT INTO Payment VALUES (8,'Debit Card',1000,5,12);
+INSERT INTO Payment VALUES (9,'Debit Card',699,7,13);
+
+
+
+
+INSERT INTO Transfer VALUES (1,1000,7,5,2);
+INSERT INTO Transfer VALUES (1,3020,8,3,6);
+INSERT INTO Transfer VALUES (1,180,9,3,7);
+INSERT INTO Transfer VALUES (1,400,10,3,8);
+
+
+INSERT INTO Checks VALUES (1,1,'Successfull Transaction');
+INSERT INTO Checks VALUES (3,1,'Successfull Transaction');
+INSERT INTO Checks VALUES (2,1,'Successfull Transaction');
+
+
+
+INSERT INTO Telecom_company VALUES ('Airtel',1);
+INSERT INTO Telecom_company VALUES ('Jio',2);
+INSERT INTO Telecom_company VALUES ('Vodafone',3);
+
+
+
+INSERT INTO Recharge_plan VALUES (1,1,'399 Talktime For Rs.399','unlimited',399);
+INSERT INTO Recharge_plan VALUES (2,1,'599 Talktime For Rs.500','unlimited',500);
+INSERT INTO Recharge_plan VALUES (3,1,'799 Talktime For Rs.599','unlimited',599);
+INSERT INTO Recharge_plan VALUES (1,2,'549 Talktime For Rs.500','unlimited',500);
+INSERT INTO Recharge_plan VALUES (2,2,'800 Talktime For Rs.699','unlimited',699);
+INSERT INTO Recharge_plan VALUES (1,3,'200 Talktime For Rs.199','unlimited',199);
+
+
+
+
+INSERT INTO Recharge VALUES (1,1,1,3,'8858586600',14);
+INSERT INTO Recharge VALUES (2,2,1,5,'9988478544',15);
+INSERT INTO Recharge VALUES (3,2,1,5,'9988478544',16);
+INSERT INTO Recharge VALUES (4,2,2,7,'7555665566',17);
+
